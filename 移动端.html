@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="render" content="webkit">
+    <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <title>移动端开发小技巧3</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        html,body{
+            height: 100%;
+        }
+
+        body{
+            position: relative;
+        }
+
+        header,footer{
+            position: absolute;
+            left: 0;
+            right: 0;
+            line-height: 40px;
+            color: #fff;
+            background: rgba(0,0,0,0.8);
+            font-size: 16px;
+            text-align: center;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+            z-index:3;
+        }
+
+        header{
+            top: 0;
+        }
+
+        footer {
+            bottom:0;
+        }
+
+
+        #wrap{
+            position: absolute;
+            left: 0;
+            top: 40px;
+            bottom: 40px;
+            /*background-color: red;*/
+            overflow: hidden;
+        }
+
+        #navs{
+            width: 100%;
+            height: 12px;
+            padding: 10px 0;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, .4);
+            box-shadow: 0 0 5px rgba(255, 255, 255, .7);
+            z-index: 5;
+            text-align: center;
+        }
+
+        #navs a{
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            margin: 0 8px;
+            vertical-align: top;
+        }
+
+        #navs a.active{
+            background: #f90;
+        }
+
+
+
+        #imgList{
+            width: 100%;
+            height: 100%;
+            font-size: 0;
+            background-color: black;
+        }
+        .box{
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+        }
+
+        .outer{
+            perspective: 300px;
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            width: 4rem;
+            height: 100%;
+            font-size: 1rem;
+            /*border: 1px solid blue;*/
+        }
+
+
+
+        .item{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transform-origin: center center -2rem;
+            -moz-transform-origin: center center -2rem;
+            -ms-transform-origin: center center -2rem;
+            -o-transform-origin: center center -2rem;
+            transform-origin: center center -2rem;
+            /*-webkit-animation: rot 10s linear infinite;*/
+            /*-o-animation: rot 10s linear infinite;*/
+            /*animation: rot 10s linear infinite;*/
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+            -ms-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+
+        .item div{
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            position: absolute;
+            top: 0;
+            left:4rem;
+            width: 100%;
+            height: 100%;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -ms-transform-origin: left center;
+            -o-transform-origin: left center;
+            transform-origin: left center;
+            -webkit-transform: rotateY(90deg);
+            -moz-transform: rotateY(90deg);
+            -ms-transform: rotateY(90deg);
+            -o-transform: rotateY(90deg);
+            transform: rotateY(90deg);
+            color: white;
+            background-repeat: no-repeat;
+            -webkit-background-size: 16rem auto;
+            background-size: 16rem auto;
+        }
+
+        .item>div{
+            left: 0;
+            -webkit-transform: rotateY(0deg);
+            -moz-transform: rotateY(0deg);
+            -ms-transform: rotateY(0deg);
+            -o-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+        }
+
+
+        @keyframes rot {
+            100%{
+                -webkit-transform: rotateY(-360deg);
+                -moz-transform: rotateY(-360deg);
+                -ms-transform: rotateY(-360deg);
+                -o-transform: rotateY(-360deg);
+                transform: rotateY(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<script>
+    autoFont();
+    window.onresize=function (){
+        autoFont();
+        setH();
+    };
+
+
+    function autoFont(){
+        var width=getRect().w;
+        var oHtml=document.getElementsByTagName("html")[0];
+        oHtml.style.fontSize=width/16+"px";
+    }
+
+    function getRect(){
+        return {
+            "h":document.body.clientHeight||document.documentElement.clientHeight,
+            "w":document.body.clientWidth||document.documentElement.clientWidth
+        };
+    }
+    function autoRect(){
+        document.body.style.height=getRect().h+"px";
+        document.body.style.width=getRect().w+"px";
+    }
+</script>
+<header>3D场景切换</header>
+<div id="wrap">
+    <ul id="imgList">
+    </ul>
+    <nav id="navs">
+        <a href="javascript:;" class="active"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+    </nav>
+</div>
+<footer>3D场景切换</footer>
+
+<script src="js/touch.js"></script>
+<script>
+    window.onload=function (){
+        setH();
+
+    };
+
+
+
+
+
+    function setH(){
+        var imgList=document.getElementById("imgList");
+        var imgA=["image/img1.jpg","image/img2.jpg","image/img3.jpg","image/img4.jpg"];
+        var str="";
+        for(var i=0;i<16;i++){
+            str+='<li class="box"><div class="outer"><div class="item"><div><div><div><div></div></div></div></div></div></div></li>';
+        }
+        imgList.innerHTML=str;
+
+
+        var imgListHeight=imgList.offsetHeight;
+        var imgListLi=imgList.getElementsByTagName("li");
+        for(var j=0;j<imgListLi.length;j++){
+            imgListLi[j].style.height=imgListHeight/4+"px";
+            var imgListLiBox=imgListLi[j].getElementsByTagName("div");
+            for(var k=2;k<imgListLiBox.length;k++){
+                var num=k-2;
+                imgListLiBox[k].style.backgroundImage='url('+imgA[num]+')';
+                var x=(j%4)*(imgListLi[j].offsetWidth);
+                var y=parseInt(j/4)*(imgListLi[j].offsetHeight);
+                console.log(x+","+y);
+                imgListLiBox[k].style.backgroundPosition=-x+"px -"+y+"px";
+            }
+
+
+
+        }
+
+    }
+</script>
+</body>
+</html>

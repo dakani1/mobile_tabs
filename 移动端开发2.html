@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="render" content="webkit">
+    <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0"/>
+    <title>移动端开发小技巧2</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .wrap{
+            width: 300px;
+            height: 300px;
+            perspective: 800px;
+            margin: 100px auto;
+            border: 1px solid red;
+        }
+
+        .box{
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 100px auto;
+
+
+            -webkit-transition: all 4s;
+            -moz-transition: all 4s;
+            -ms-transition: all 4s;
+            -o-transition: all 4s;
+            transition: all 4s;
+            -webkit-transform-origin: center center -50px;
+            -moz-transform-origin: center center -50px;
+            -ms-transform-origin: center center -50px;
+            -o-transform-origin: center center -50px;
+            transform-origin: center center -50px;
+        }
+
+        .wrap:hover .box{
+            -webkit-transform: rotateY(360deg);
+            -moz-transform: rotateY(360deg);
+            -ms-transform: rotateY(360deg);
+            -o-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+
+        }
+
+        .box div{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top:0;
+            left: 100px;
+            background-color: green;
+
+
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transform-origin: left top;
+            -moz-transform-origin: left top;
+            -ms-transform-origin: left top;
+            -o-transform-origin: left top;
+            transform-origin: left top;
+            -webkit-transform:rotateY(90deg);
+            -moz-transform:rotateY(90deg);
+            -ms-transform:rotateY(90deg);
+            -o-transform:rotateY(90deg);
+            transform:rotateY(90deg);
+        }
+
+        .box>div{
+            left: 0;
+            -webkit-transform:rotateY(0deg);
+            -moz-transform:rotateY(0deg);
+            -ms-transform:rotateY(0deg);
+            -o-transform:rotateY(0deg);
+            transform:rotateY(0deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box">
+            <div>
+                <span>1</span>s
+                <div>
+                    <span>2</span>
+                    <div>
+                        <span>3</span>
+                        <div>
+                            <span>4</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

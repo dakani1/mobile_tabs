@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="render" content="webkit">
+    <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0"/>
+    <title>移动端开发小技巧1</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .wrap{
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+            margin: 100px auto;
+            perspective: 800px;
+        }
+
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 100px auto;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-box-shadow: 0 0 30px gray;
+            -moz-box-shadow: 0 0 30px gray;
+            box-shadow: 0 0 30px gray;
+            /*-webkit-transition: transform 2s;*/
+            /*-moz-transition: transform 2s;*/
+            /*-ms-transition: transform 2s;*/
+            /*-o-transition: transform 2s;*/
+            /*transition: transform 2s;*/
+            /*-webkit-animation:boxS 0.8s infinite ease-in-out alternate;*/
+            /*-o-animation:boxS 0.8s infinite ease-in-out alternate;*/
+            /*animation:boxS 0.8s infinite ease-in-out alternate;*/
+
+            -webkit-animation:boxS 1s infinite ease-in-out alternate;
+            -o-animation:boxS 1s infinite ease-in-out alternate;
+            animation:boxS 1s infinite ease-in-out alternate;
+            
+            
+            /*-webkit-transform: translateZ(100px);*/
+            /*-moz-transform: translateZ(100px);*/
+            /*-ms-transform: translateZ(100px);*/
+            /*-o-transform: translateZ(100px);*/
+            /*transform: translateZ(100px);*/
+        }
+
+        @keyframes rot {
+            0%{
+                -webkit-transform: rotateX(0deg) rotateY(0deg);
+                -moz-transform: rotateX(0deg) rotateY(0deg);
+                -ms-transform: rotateX(0deg) rotateY(0deg);
+                -o-transform: rotateX(0deg) rotateY(0deg);
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            50%{
+                -webkit-transform: rotateX(-180deg) rotateY(0deg);
+                -moz-transform: rotateX(-180deg) rotateY(0deg);
+                -ms-transform: rotateX(-180deg) rotateY(0deg);
+                -o-transform: rotateX(-180deg) rotateY(0deg);
+                transform: rotateX(-180deg) rotateY(0deg);
+            }
+            100%{
+                -webkit-transform: rotateX(-180deg) rotateY(-180deg);
+                -moz-transform: rotateX(-180deg) rotateY(-180deg);
+                -ms-transform: rotateX(-180deg) rotateY(-180deg);
+                -o-transform: rotateX(-180deg) rotateY(-180deg);
+                transform: rotateX(-180deg) rotateY(-180deg);
+
+            }
+
+        }
+
+        @keyframes boxS {
+            100%{
+                -webkit-box-shadow: 0 0 0 gray;
+                -moz-box-shadow: 0 0 0 0 gray;
+                box-shadow: 0 0 0 0 gray;
+            }
+
+        }
+        
+
+        /*.wrap:hover .box{*/
+            /*-webkit-transform: rotateX(360deg);*/
+            /*-moz-transform: rotateX(360deg);*/
+            /*-ms-transform: rotateX(360deg);*/
+            /*-o-transform: rotateX(360deg);*/
+            /*transform: rotateX(360deg);*/
+            /*-webkit-transform-origin: center center 0;*/
+            /*-moz-transform-origin: center center 0;*/
+            /*-ms-transform-origin: center center 0;*/
+            /*-o-transform-origin: center center 0;*/
+            /*transform-origin: center center 0;*/
+        /*}*/
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box"></div>
+    </div>
+</body>
+</html>
